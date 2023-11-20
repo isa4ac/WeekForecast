@@ -13,7 +13,7 @@ struct ForecastDayRow: View {
     var icon: String
     var body: some View {
         HStack {
-            AsyncImage(url: URL(string: "https:" + icon)) { phase in
+            AsyncImage(url: URL(string: icon)) { phase in
                 if let image = phase.image {
                     image
                         .resizable()

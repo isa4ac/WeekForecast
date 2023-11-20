@@ -20,7 +20,10 @@ extension MainContentView {
         }
         
         func getCurrentIcon() -> String {
-            selectedLocationWeather.current?.conditions?.icon ?? ""
+            if let iconLink = selectedLocationWeather.current?.conditions?.icon {
+                return "https:" + iconLink
+            }
+            return ""
         }
         
         func getCurrentTemp() -> Double {
@@ -53,7 +56,10 @@ extension MainContentView {
         }
         
         func getDayConditionIcon(_ day: ForecastDay) -> String {
-            getDayCondition(day).icon ?? ""
+            if let iconLink = getDayCondition(day).icon {
+                return "https:" + iconLink
+            }
+            return ""
         }
         
         func getTempUnit() -> String {

@@ -34,7 +34,7 @@ extension MainContentView {
         VStack {
             HStack {
                 Group {
-                    AsyncImage(url: URL(string: "https:" + (viewModel.getCurrentIcon()))) { phase in
+                    AsyncImage(url: URL(string: (viewModel.getCurrentIcon()))) { phase in
                         if let image = phase.image {
                             image
                                 .resizable()
@@ -75,7 +75,7 @@ extension MainContentView {
                     }
                 }
             } header: {
-                Text("7-Day Forecast")
+                Text("This Week's Forecast")
             }
         }
         .padding([.leading, .top], -20)

@@ -32,21 +32,25 @@ extension MainContentView {
     @ViewBuilder
     var weekForecast: some View {
         HStack {
-            AsyncImage(url: URL(string: "https:" + (viewModel.selectedLocationWeather.current?.conditions?.icon ?? ""))) { phase in
-                if let image = phase.image {
-                    image
-                        .resizable()
-                } else if phase.error != nil {
-                    ProgressView() // Indicates an error.
-                } else {
-                    ProgressView()
+            Group {
+                AsyncImage(url: URL(string: "https:" + (viewModel.selectedLocationWeather.current?.conditions?.icon ?? ""))) { phase in
+                    if let image = phase.image {
+                        image
+                            .resizable()
+                    } else if phase.error != nil {
+                        ProgressView() // Indicates an error.
+                    } else {
+                        ProgressView()
+                    }
                 }
+                .frame(width: 100, height: 100)
+                Text(String(format: "%.0f", viewModel.selectedLocationWeather.current?.temp ?? 0.0) + "°")
+                    .font(.system(size: 72))
+                    .bold()
             }
-            .frame(width: 100, height: 100)
-            Text(String(format: "%.0f", viewModel.selectedLocationWeather.current?.temp ?? 0.0) + "°")
-                .font(.system(size: 72))
-                .bold()
-            Spacer()
+            .padding(.leading, -20)
+            .frame(alignment: .center)
+            
         }
         List() {
             DisclosureGroup {

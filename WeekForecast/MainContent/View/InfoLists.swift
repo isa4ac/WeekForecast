@@ -14,13 +14,13 @@ extension MainContentView {
     var dayInfo: some View {
         VStack {
             Row(label: "Wind Speed",
-                value: String(format: "%.1f", viewModel.selectedLocationWeather.current?.windspeed ?? 0.0) + "mph")
+                value: viewModel.selectedLocationWeather.current?.getWindSpeed(viewModel.locationSelection) ?? "")
             Row(label: "Wind Direction",
                 value: viewModel.selectedLocationWeather.current?.windDirection ?? "")
             Row(label: "Humidity",
                 value: String(format: "%.0f%%", viewModel.selectedLocationWeather.current?.humidity ?? 0.0))
             Row(label: "Feels Like",
-                value: String(format: "%.0f", viewModel.selectedLocationWeather.current?.feelsLikeTemp ?? 0.0))
+                value: viewModel.selectedLocationWeather.current?.getFeelsLike(viewModel.locationSelection) ?? "")
             Row(label: "UV",
                 value: String(format: "%.0f", viewModel.selectedLocationWeather.current?.uv ?? 0.0), isLast: true)
         }
@@ -67,11 +67,11 @@ extension MainContentView {
             .tint(Color(.separator))
             Section {
                 ForEach(viewModel.getForecastDays(), id: \.self) { day in
-                    NavigationLink(destination: DayDetailView(day: day)) {
+                    NavigationLink(destination: DayDetailView(day: day, locationSelection: viewModel.locationSelection)) {
                         if let dayWeather = day.day {
-                            ForecastDayRow(date: viewModel.formatDateString(day.date ?? ""),
-                                           value: viewModel.getDayTemp(dayWeather),
-                                           icon: viewModel.getDayConditionIcon(day))
+                            ForecastDayRow(date: day.getFormattedDateString(),
+                                           value: dayWeather.getHighTemp(viewModel.locationSelection),
+                                           icon: dayWeather.getConditionIcon())
                         }
                     }
                 }

@@ -25,13 +25,6 @@ extension MainContentView {
             return ""
         }
         
-        func getDayTemp(_ day: Day) -> String {
-            if locationSelection == "London" {
-                return String(format: "%.0f", convertToCelsius(day.highTemp ?? 0.0)) + "°" + "C"
-            }
-            return String(format: "%.0f", day.highTemp ?? 0.0) + "°" + "F"
-        }
-        
         func getCurrentIcon() -> String {
             if let iconLink = selectedLocationWeather.current?.conditions?.icon {
                 return "https:" + iconLink
@@ -46,33 +39,11 @@ extension MainContentView {
             return selectedLocationWeather.current?.temp ?? 0.0
         }
         
-        func convertToCelsius(_ fTemp: Double) -> Double {
-            (fTemp - 32.0) * (5/9)
-        }
-        
         func getForecastDays() -> [ForecastDay] {
             if let forecast = selectedLocationWeather.forecast, let days = forecast.forecastday {
                 return days
             }
             return [ForecastDay]()
-        }
-        
-        func getDayCondition(_ day: ForecastDay) -> Condition {
-            if let condition = day.day?.condition {
-                return condition
-            }
-            return Condition()
-        }
-        
-        func getDayConditionText(_ day: ForecastDay) -> String {
-            getDayCondition(day).text ?? ""
-        }
-        
-        func getDayConditionIcon(_ day: ForecastDay) -> String {
-            if let iconLink = getDayCondition(day).icon {
-                return "https:" + iconLink
-            }
-            return ""
         }
         
         func getTempUnit() -> String {

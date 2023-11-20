@@ -9,14 +9,15 @@ import SwiftUI
 
 struct DayDetailView: View {
     var day: ForecastDay
+    var locationSelection: String
     var body: some View {
         VStack {
             Row(label: "High",
-                value: String(format: "%.0f", day.day?.highTemp ?? 0.0))
+                value: day.day?.getHighTemp(locationSelection) ?? "")
             Row(label: "Low",
-                value: String(format: "%.0f", day.day?.lowTemp ?? 0.0))
+                value: day.day?.getLowTemp(locationSelection) ?? "")
             Row(label: "Max Wind Speed",
-                value: String(format: "%.1f", day.day?.maxWindSpeed ?? 0.0))
+                value: day.day?.getWindSpeed(locationSelection) ?? "")
             Row(label: "Condition",
                 value: day.day?.condition?.text ?? "",
                 isLast: true)

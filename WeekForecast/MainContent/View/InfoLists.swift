@@ -18,7 +18,7 @@ extension MainContentView {
             Row(label: "Wind Direction",
                 value: viewModel.selectedLocationWeather.current?.windDirection ?? "")
             Row(label: "Humidity",
-                value: String(format: "%.1f%%", viewModel.selectedLocationWeather.current?.humidity ?? 0.0))
+                value: String(format: "%.0f%%", viewModel.selectedLocationWeather.current?.humidity ?? 0.0))
             Row(label: "Feels Like",
                 value: String(format: "%.0f", viewModel.selectedLocationWeather.current?.feelsLikeTemp ?? 0.0))
             Row(label: "UV",
@@ -64,6 +64,7 @@ extension MainContentView {
             } label: {
                 Text("Info On Today's Weather")
             }
+            .tint(Color(.separator))
             Section {
                 ForEach(viewModel.getForecastDays(), id: \.self) { day in
                     NavigationLink(destination: DayDetailView(day: day)) {

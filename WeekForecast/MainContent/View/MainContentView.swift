@@ -14,8 +14,9 @@ struct MainContentView: View {
         NavigationStack {
             VStack {
                 Picker("Location", selection: $viewModel.locationSelection) {
-                    ForEach(Array(forcast.weatherData.keys), id: \.self) { location in
+                    ForEach(Array(forcast.weatherData.keys.sorted()), id: \.self) { location in
                         Text(location)
+                            .tag(location as String?)
                     }
                 }
                 .onChange(of: viewModel.locationSelection) {

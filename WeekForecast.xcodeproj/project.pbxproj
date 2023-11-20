@@ -79,10 +79,10 @@
 				11ACEC922B0BECFB009BE5B5 /* Sub-Views */,
 				11ACEC912B0BECF9009BE5B5 /* Models */,
 				11ACEC902B0BECEE009BE5B5 /* MainContent */,
+				11ACEC882B0BECE7009BE5B5 /* Preview Content */,
+				11ACEC862B0BECE7009BE5B5 /* Assets.xcassets */,
 				11ACEC822B0BECE7009BE5B5 /* WeekForecastApp.swift */,
 				11ACEC842B0BECE7009BE5B5 /* ContentView.swift */,
-				11ACEC862B0BECE7009BE5B5 /* Assets.xcassets */,
-				11ACEC882B0BECE7009BE5B5 /* Preview Content */,
 			);
 			path = WeekForecast;
 			sourceTree = "<group>";

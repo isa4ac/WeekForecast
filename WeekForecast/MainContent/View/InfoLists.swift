@@ -18,7 +18,7 @@ extension MainContentView {
             Row(label: "Wind Direction",
                 value: viewModel.selectedLocationWeather.current?.windDirection ?? "")
             Row(label: "Humidity",
-                value: String(format: "%.1f", viewModel.selectedLocationWeather.current?.humidity ?? 0.0))
+                value: String(format: "%.1f%%", viewModel.selectedLocationWeather.current?.humidity ?? 0.0))
             Row(label: "Feels Like",
                 value: String(format: "%.0f", viewModel.selectedLocationWeather.current?.feelsLikeTemp ?? 0.0))
             Row(label: "UV",
@@ -31,26 +31,31 @@ extension MainContentView {
 extension MainContentView {
     @ViewBuilder
     var weekForecast: some View {
-        HStack {
-            Group {
-                AsyncImage(url: URL(string: "https:" + (viewModel.selectedLocationWeather.current?.conditions?.icon ?? ""))) { phase in
-                    if let image = phase.image {
-                        image
-                            .resizable()
-                    } else if phase.error != nil {
-                        ProgressView() // Indicates an error.
-                    } else {
-                        ProgressView()
+        VStack {
+            HStack {
+                Group {
+                    AsyncImage(url: URL(string: "https:" + (viewModel.getCurrentIcon()))) { phase in
+                        if let image = phase.image {
+                            image
+                                .resizable()
+                        } else if phase.error != nil {
+                            ProgressView() // Indicates an error.
+                        } else {
+                            ProgressView()
+                        }
                     }
+                    .frame(width: 100, height: 100)
+                    Text(String(format: "%.0f", viewModel.getCurrentTemp()) + "°")
+                        .font(.system(size: 72))
+                        .bold()
                 }
-                .frame(width: 100, height: 100)
-                Text(String(format: "%.0f", viewModel.selectedLocationWeather.current?.temp ?? 0.0) + "°")
-                    .font(.system(size: 72))
-                    .bold()
+                .padding(.leading, -15)
+                .frame(alignment: .center)
+                
             }
-            .padding(.leading, -20)
-            .frame(alignment: .center)
-            
+            Text(viewModel.getTempUnit())
+                .font(.footnote)
+                .foregroundStyle(.secondary)
         }
         List() {
             DisclosureGroup {
@@ -64,7 +69,7 @@ extension MainContentView {
                     NavigationLink(destination: DayDetailView(day: day)) {
                         if let dayWeather = day.day {
                             ForecastDayRow(date: day.date ?? "",
-                                           value: String(format: "%.0f", dayWeather.highTemp ?? 0.0) + "°",
+                                           value: viewModel.getDayTemp(dayWeather),
                                            icon: viewModel.getDayConditionIcon(day))
                         }
                     }

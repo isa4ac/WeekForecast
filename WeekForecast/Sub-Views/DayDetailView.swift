@@ -12,9 +12,9 @@ struct DayDetailView: View {
     var body: some View {
         VStack {
             Row(label: "High",
-                value: String(format: "%.1f", day.day?.highTemp ?? 0.0) + "mph")
+                value: String(format: "%.0f", day.day?.highTemp ?? 0.0))
             Row(label: "Low",
-                value: String(format: "%.1f", day.day?.lowTemp ?? 0.0) + "mph")
+                value: String(format: "%.0f", day.day?.lowTemp ?? 0.0))
             Row(label: "Max Wind Speed",
                 value: String(format: "%.1f", day.day?.maxWindSpeed ?? 0.0))
             Row(label: "Condition",

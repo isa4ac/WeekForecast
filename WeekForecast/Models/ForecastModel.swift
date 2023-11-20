@@ -13,7 +13,7 @@ class ForcastModel: ObservableObject {
     
     // this function will read data from the 3 json files within the project in insert the data into the models inside of WeatherDataset
     func readData() {
-        var resources = ["Cincinnati", "Honolulu", "London"]
+        let resources = ["Cincinnati", "Honolulu", "London"]
         let decoder = JSONDecoder()
         decoder.keyDecodingStrategy = .convertFromSnakeCase
         decoder.dateDecodingStrategy = .secondsSince1970
@@ -22,7 +22,6 @@ class ForcastModel: ObservableObject {
             if let path = Bundle.main.path(forResource: resource, ofType: "json") {
                 do {
                     let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
-                    let jsonResult = try JSONSerialization.jsonObject(with: data, options: .mutableLeaves)
                     guard let weatherDataSet = try? decoder.decode(WeatherDataset.self, from: data) else {
                         fatalError("Failed to decode \(resource) from bundle.")
                     }

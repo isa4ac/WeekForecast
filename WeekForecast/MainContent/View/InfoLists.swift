@@ -20,9 +20,9 @@ extension MainContentView {
             Row(label: "Humidity",
                 value: String(format: "%.1f", viewModel.selectedLocationWeather.current?.humidity ?? 0.0))
             Row(label: "Feels Like",
-                value: String(format: "%.1f", viewModel.selectedLocationWeather.current?.feelsLikeTemp ?? 0.0))
+                value: String(format: "%.0f", viewModel.selectedLocationWeather.current?.feelsLikeTemp ?? 0.0))
             Row(label: "UV",
-                value: String(format: "%.1f", viewModel.selectedLocationWeather.current?.uv ?? 0.0), isLast: true)
+                value: String(format: "%.0f", viewModel.selectedLocationWeather.current?.uv ?? 0.0), isLast: true)
         }
     }
 }
@@ -43,7 +43,7 @@ extension MainContentView {
                 }
             }
             .frame(width: 100, height: 100)
-            Text(String(format: "%.1f", viewModel.selectedLocationWeather.current?.temp ?? 0.0) + "°")
+            Text(String(format: "%.0f", viewModel.selectedLocationWeather.current?.temp ?? 0.0) + "°")
                 .font(.system(size: 72))
                 .bold()
             Spacer()
@@ -57,10 +57,10 @@ extension MainContentView {
             }
             Section {
                 ForEach(viewModel.getForecastDays(), id: \.self) { day in
-                    NavigationLink(destination: DayDetailView(day: day ?? ForecastDay())) {
+                    NavigationLink(destination: DayDetailView(day: day)) {
                         if let dayWeather = day.day {
                             ForecastDayRow(date: day.date ?? "",
-                                           value: String(format: "%.1f", dayWeather.highTemp ?? 0.0) + "°",
+                                           value: String(format: "%.0f", dayWeather.highTemp ?? 0.0) + "°",
                                            icon: viewModel.getDayConditionIcon(day))
                         }
                     }

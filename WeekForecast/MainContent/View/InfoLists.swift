@@ -69,7 +69,7 @@ extension MainContentView {
                 ForEach(viewModel.getForecastDays(), id: \.self) { day in
                     NavigationLink(destination: DayDetailView(day: day)) {
                         if let dayWeather = day.day {
-                            ForecastDayRow(date: day.date ?? "",
+                            ForecastDayRow(date: viewModel.formatDateString(day.date ?? ""),
                                            value: viewModel.getDayTemp(dayWeather),
                                            icon: viewModel.getDayConditionIcon(day))
                         }

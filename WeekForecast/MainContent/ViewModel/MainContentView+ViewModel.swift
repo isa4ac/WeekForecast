@@ -12,6 +12,19 @@ extension MainContentView {
         @Published var locationSelection = "Cincinnati"
         @Published var selectedLocationWeather = WeatherDataset()
         
+        func formatDateString(_ date: String) -> String {
+            let formatGet = DateFormatter()
+            formatGet.dateFormat = "yyyy-MM-dd"
+            
+            let formatPost = DateFormatter()
+            formatPost.dateFormat = "E, d MMM"
+            
+            if let dateVal = formatGet.date(from: date) {
+                return formatPost.string(from: dateVal)
+            }
+            return ""
+        }
+        
         func getDayTemp(_ day: Day) -> String {
             if locationSelection == "London" {
                 return String(format: "%.0f", convertToCelsius(day.highTemp ?? 0.0)) + "°" + "C"

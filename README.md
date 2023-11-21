@@ -11,7 +11,7 @@ It is also **dark mode compatible**.
 ## iPhone SE
 ![iPhone SE](https://github.com/isa4ac/WeekForecast/blob/main/se1.png?raw=false)
 
-## iPhone 15 Pro Max
+## iPhone 15 Pro
 ![iPhone 15 Pro Max](https://github.com/isa4ac/WeekForecast/blob/main/15pro.png?raw=true)
 
 ## iPad Pro 12.9in

@@ -1,0 +1,102 @@
+{
+  "current": {
+    "temp": 66.9,
+    "conditions": {
+      "text": "Clear",
+      "icon": "//cdn.weatherapi.com/weather/64x64/day/113.png"
+    },
+    "windSpeed": 5.6,
+    "windDirection": "SE",
+    "humidity": 42,
+    "feelsLikeTemp": 66.9,
+    "uv": 1
+  },
+  "forecast": {
+    "forecastday": [
+      {
+        "date": "2022-10-11",
+        "day": {
+          "highTemp": 72,
+          "lowTemp": 40.5,
+          "maxWindSpeed": 8.7,
+          "condition": {
+            "text": "Sunny",
+            "icon": "//cdn.weatherapi.com/weather/64x64/day/113.png"
+          }
+        }
+      },
+      {
+        "date": "2022-10-12",
+        "day": {
+          "highTemp": 81,
+          "lowTemp": 53.8,
+          "maxWindSpeed": 23,
+          "condition": {
+            "text": "Moderate rain",
+            "icon": "//cdn.weatherapi.com/weather/64x64/day/302.png"
+          }
+        }
+      },
+      {
+        "date": "2022-10-13",
+        "day": {
+          "highTemp": 69.1,
+          "lowTemp": 49.1,
+          "maxWindSpeed": 18.8,
+          "condition": {
+            "text": "Patchy rain possible",
+            "icon": "//cdn.weatherapi.com/weather/64x64/day/176.png"
+          }
+        }
+      },
+      {
+        "date": "2022-10-14",
+        "day": {
+          "highTemp": 70.3,
+          "lowTemp": 38.1,
+          "maxWindSpeed": 16.6,
+          "condition": {
+            "text": "Sunny",
+            "icon": "//cdn.weatherapi.com/weather/64x64/day/113.png"
+          }
+        }
+      },
+      {
+        "date": "2022-10-15",
+        "day": {
+          "highTemp": 74.8,
+          "lowTemp": 50.4,
+          "maxWindSpeed": 23.5,
+          "condition": {
+            "text": "Moderate rain",
+            "icon": "//cdn.weatherapi.com/weather/64x64/day/302.png"
+          }
+        }
+      },
+      {
+        "date": "2022-10-16",
+        "day": {
+          "highTemp": 65.3,
+          "lowTemp": 38.5,
+          "maxWindSpeed": 9.2,
+          "condition": {
+            "text": "Patchy rain possible",
+            "icon": "//cdn.weatherapi.com/weather/64x64/day/176.png"
+          }
+        }
+      },
+      {
+        "date": "2022-10-17",
+        "day": {
+          "highTemp": 61.5,
+          "lowTemp": 37.4,
+          "maxWindSpeed": 16.1,
+          "condition": {
+            "text": "Sunny",
+            "icon": "//cdn.weatherapi.com/weather/64x64/day/113.png"
+          }
+        }
+      }
+    ]
+  }
+}
